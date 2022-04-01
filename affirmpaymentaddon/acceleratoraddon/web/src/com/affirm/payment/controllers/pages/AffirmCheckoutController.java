@@ -222,7 +222,7 @@ public class AffirmCheckoutController extends AbstractCheckoutController
       {
          final GuestRegisterForm guestRegisterForm = new GuestRegisterForm();
          guestRegisterForm.setOrderCode(orderDetails.getGuid());
-         uid = orderDetails.getPaymentInfo().getBillingAddress().getEmail();
+         uid = orderDetails.getUser().getUid().split("\\|")[1];
          guestRegisterForm.setUid(uid);
          model.addAttribute(guestRegisterForm);
       }
