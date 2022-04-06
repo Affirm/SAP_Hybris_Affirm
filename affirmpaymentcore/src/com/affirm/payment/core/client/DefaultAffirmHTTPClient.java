@@ -23,7 +23,7 @@ public class DefaultAffirmHTTPClient implements AffirmHTTPClient {
 
    private static final Logger LOG = LoggerFactory.getLogger(DefaultAffirmHTTPClient.class);
 
-   public String send(String endpointUrl, String jsonString, AffirmConfigContainerModel affirmConfigContainer){
+   public String send(String endpointUrl, String jsonString, AffirmConfigContainerModel affirmConfigContainer, String idempotencyKey){
       try {
 
          HttpPost request = new HttpPost(endpointUrl);
@@ -32,6 +32,7 @@ public class DefaultAffirmHTTPClient implements AffirmHTTPClient {
          String authHeader = "Basic " + new String(encodedAuth);
          request.setHeader(HttpHeaders.AUTHORIZATION, authHeader);
          request.addHeader("content-type", "application/json");
+         request.addHeader("Idempotency-Key", idempotencyKey);
          request.setEntity( new StringEntity(jsonString));
 
          HttpClient client = HttpClientBuilder.create().build();

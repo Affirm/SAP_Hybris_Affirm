@@ -14,6 +14,6 @@ public interface AffirmHTTPClient {
     * @param affirmConfigContainer Affirm configuration container to hold the authentication information
     * @return Retunrs the response JSON returned by the server.
     */
-   String send(String endpointUrl, String jsonString, AffirmConfigContainerModel affirmConfigContainer);
+   String send(String endpointUrl, String jsonString, AffirmConfigContainerModel affirmConfigContainer, String idempotencyKey);
 
 }

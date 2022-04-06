@@ -10,7 +10,7 @@ public interface AffirmPaymentFacade {
 
    boolean isAffirmPaymentEnabled();
 
-   boolean authorisePayment(String checkoutToken);
+   boolean authorisePayment(String transactionId);
 
    boolean capturePayment(String orderId);
 

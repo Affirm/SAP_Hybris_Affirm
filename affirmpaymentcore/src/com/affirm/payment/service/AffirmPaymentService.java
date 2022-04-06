@@ -12,7 +12,7 @@ public interface AffirmPaymentService {
 
    void initizePayment(CartModel cart, AddressModel addressModel);
 
-   boolean authorisePayment(CartModel sessionCart, String checkoutToken);
+   boolean authorisePayment(CartModel sessionCart, String transactionId);
 
    boolean capturePayment(AbstractOrderModel order);
 

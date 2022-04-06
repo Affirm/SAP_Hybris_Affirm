@@ -52,10 +52,10 @@ public class DefaultAffirmPaymentService implements AffirmPaymentService{
 
    }
 
-   @Override public boolean authorisePayment(CartModel cart, String checkoutToken) {
+   @Override public boolean authorisePayment(CartModel cart, String transactionId) {
       PaymentTransactionModel initTransaction = affirmPaymentTransactionStrategy.getOrCreateTransaction(cart);
       AffirmPaymentTransactionEntryModel initTransactionEntry = affirmPaymentTransactionStrategy.createTransactionEntryModel(
-            AffirmPaymentTransactionEntryModel.class, checkoutToken, PaymentTransactionType.INITIATE, initTransaction);
+            AffirmPaymentTransactionEntryModel.class, transactionId, PaymentTransactionType.INITIATE, initTransaction);
 
       cart.setPaymentMode(affirmPaymentCoreService.getPaymentMode());
       modelService.saveAll(cart, initTransaction, initTransactionEntry);
@@ -63,7 +63,7 @@ public class DefaultAffirmPaymentService implements AffirmPaymentService{
       AffirmPaymentServiceRequest request = new AffirmAuthorisationPaymentRequestServiceBuilder()
             .setOrder(cart)
             .setTransactionType(PaymentTransactionType.AUTHORIZATION)
-            .setCheckoutToken(checkoutToken).build();
+            .setTransactionId(transactionId).build();
 
       AffirmPaymentServiceResult paymentServiceResult = affirmPaymentServiceExecutor.execute(request);
 

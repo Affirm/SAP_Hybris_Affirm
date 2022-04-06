@@ -47,15 +47,15 @@ public class DefaultAffirmPaymentFacade implements AffirmPaymentFacade {
       affirmPaymentService.initizePayment(cart, addressModel);
    }
 
-   @Override public boolean authorisePayment(String checkoutToken) {
-      if(checkoutToken == null){
-         throw new AffirmPaymentException(AffirmPaymentConstants.REASON_CODE.INVALID_DATA, "checkoutToken cannot be empty");
+   @Override public boolean authorisePayment(String transactionId) {
+      if(transactionId == null){
+         throw new AffirmPaymentException(AffirmPaymentConstants.REASON_CODE.INVALID_DATA, "transactionId cannot be empty");
       }
       if(!cartService.hasSessionCart()){
          throw new AffirmPaymentException(AffirmPaymentConstants.REASON_CODE.INVALID_DATA, "Cart cannot be empty");
       }
 
-      return affirmPaymentService.authorisePayment(cartService.getSessionCart(), checkoutToken);
+      return affirmPaymentService.authorisePayment(cartService.getSessionCart(), transactionId);
 
    }
 

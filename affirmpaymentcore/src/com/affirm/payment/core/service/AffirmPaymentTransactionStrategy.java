@@ -21,7 +21,7 @@ public interface AffirmPaymentTransactionStrategy {
 
    PaymentTransactionModel getTransaction(AbstractOrderModel cart);
 
-   <T extends PaymentTransactionEntryModel> T createTransactionEntryModel(Class<T> transactionEntryClass, String checkoutToken, PaymentTransactionType paymentTransactionType, PaymentTransactionModel transaction);
+   <T extends PaymentTransactionEntryModel> T createTransactionEntryModel(Class<T> transactionEntryClass, String transactionId, PaymentTransactionType paymentTransactionType, PaymentTransactionModel transaction);
 
    Optional<PaymentTransactionEntryModel> getTransactionEntry(PaymentTransactionModel affirmTransaction, PaymentTransactionType transactionType,
          TransactionStatus ... statuses);

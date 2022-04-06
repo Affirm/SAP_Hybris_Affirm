@@ -97,25 +97,25 @@ public class DefaultAffirmPaymentServiceTest {
 
     @Test
     public void authorisePayment() {
-        String checkoutToken = "tokenString";
+        String transactionId = "tokenString";
         PaymentTransactionEntryModel transaction = mock(PaymentTransactionEntryModel.class);
         AffirmConfigContainerModel config = mock(AffirmConfigContainerModel.class);
         when(affirmPaymentTransactionStrategy.getOrCreateTransaction(cart)).thenReturn(paymentTransactionModel);
         when(affirmPaymentTransactionStrategy.createTransactionEntryModel(
-                AffirmPaymentTransactionEntryModel.class, checkoutToken, PaymentTransactionType.INITIATE, paymentTransactionModel)).thenReturn(affirmPaymentTransactionEntryModel);
+                AffirmPaymentTransactionEntryModel.class, transactionId, PaymentTransactionType.INITIATE, paymentTransactionModel)).thenReturn(affirmPaymentTransactionEntryModel);
         when(affirmPaymentCoreService.getPaymentMode()).thenReturn(paymentMode);
         PowerMockito.when(affirmPaymentServiceExecutor.execute(Mockito.any(AffirmPaymentServiceRequest.class))).thenReturn(paymentServiceResult);
         when(paymentServiceResult.getTransaction()).thenReturn(transaction);
         when(affirmPaymentTransactionStrategy.isTransactionSuccessfull(transaction)).thenReturn(true);
         when(affirmPaymentCoreService.getPaymentConfiguration(cart)).thenReturn(config);
-        Assert.assertTrue(defaultAffirmPaymentService.authorisePayment(cart, checkoutToken));
+        Assert.assertTrue(defaultAffirmPaymentService.authorisePayment(cart, transactionId));
         verify(affirmPaymentCoreService).getPaymentConfiguration(cart);
     }
 
-    private AffirmAuthorisationPaymentRequestServiceBuilder newBuilderMock(CartModel cart, String checkoutToken) {
+    private AffirmAuthorisationPaymentRequestServiceBuilder newBuilderMock(CartModel cart, String transactionId) {
         AffirmAuthorisationPaymentRequestServiceBuilder b = mock(AffirmAuthorisationPaymentRequestServiceBuilder.class);
         when(b.setOrder(cart)).thenReturn(b);
-        when(b.setCheckoutToken(checkoutToken)).thenReturn(b);
+        when(b.setTransactionId(transactionId)).thenReturn(b);
         when(b.setTransactionType(PaymentTransactionType.AUTHORIZATION)).thenReturn(b);
         return b;
     }
