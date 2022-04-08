@@ -48,8 +48,8 @@ public class DefaultAffirmJsonPaymentServiceProvider implements PaymentServicePr
    @Override public AffirmPaymentServiceResult execute(AffirmPaymentServiceRequest request) {
       AbstractOrderModel cart = (AbstractOrderModel) request.getParams().get(AffirmPaymentConstants.ORDER);
       AffirmConfigContainerModel affirmConfiguration = cart.getSite().getAffirmConfigContainer();
-      String requestId = (String) request.getParams().get(AffirmPaymentConstants.Authorisation.CHECKOUT_TOKEN);
-
+      String requestId = (String) request.getParams().get(AffirmPaymentConstants.Authorisation.TRANSACTION_ID);
+      String idempotency_key = cart.getGuid();
 
       PaymentTransactionModel transaction = affirmPaymentTransactionStrategy.getOrCreateTransaction(cart);
       Map requestMap = requestConverter.convert(request);
@@ -60,7 +60,7 @@ public class DefaultAffirmJsonPaymentServiceProvider implements PaymentServicePr
          LOG.debug(String.format("send '%s' json request to %s endpoint ", jsonRequest, endpointUrl));
       }
 
-      String result = affirmHTTPClient.send(endpointUrl, jsonRequest, affirmConfiguration);
+      String result = affirmHTTPClient.send(endpointUrl, jsonRequest, affirmConfiguration, idempotency_key);
 
       if (LOG.isDebugEnabled()){
          LOG.debug(String.format("result: '%s'", result));

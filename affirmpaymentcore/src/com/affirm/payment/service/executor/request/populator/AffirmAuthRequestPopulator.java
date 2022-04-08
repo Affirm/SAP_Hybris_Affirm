@@ -11,8 +11,8 @@ import java.util.HashMap;
 public class AffirmAuthRequestPopulator implements Populator<AffirmPaymentServiceRequest,HashMap> {
    @Override public void populate(AffirmPaymentServiceRequest request, HashMap map) throws ConversionException {
       AbstractOrderModel cart = (AbstractOrderModel) request.getParams().get(AffirmPaymentConstants.ORDER);
-      String checkoutToken = (String) request.getParams().get(AffirmPaymentConstants.Authorisation.CHECKOUT_TOKEN);
-      map.put(AffirmPaymentConstants.Authorisation.CHECKOUT_TOKEN, checkoutToken);
+      String transactionId = (String) request.getParams().get(AffirmPaymentConstants.Authorisation.TRANSACTION_ID);
+      map.put(AffirmPaymentConstants.Authorisation.TRANSACTION_ID, transactionId);
       map.put(AffirmPaymentConstants.ORDER_ID, cart.getCode());
 
    }

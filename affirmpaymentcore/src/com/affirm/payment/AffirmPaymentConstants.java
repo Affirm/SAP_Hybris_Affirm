@@ -13,7 +13,7 @@ public interface AffirmPaymentConstants {
    }
 
    public class Authorisation {
-      public static final String CHECKOUT_TOKEN = "checkout_token" ;
+      public static final String TRANSACTION_ID = "transaction_id" ;
    }
 
    public class REFUND {
