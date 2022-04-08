@@ -97,7 +97,7 @@ public class DefaultAffirmPaymentService implements AffirmPaymentService{
       AffirmPaymentServiceRequest request = new AffirmPaymentRequestServiceBuilder()
             .setOrder(order)
             .setTransactionType(PaymentTransactionType.CAPTURE)
-            .setChargeId(authorisation.getProperties().get(ID))
+            .setTransactionObjectId(authorisation.getProperties().get(ID))
             .build();
 
       AffirmPaymentServiceResult paymentServiceResult = affirmPaymentServiceExecutor.execute(request);
@@ -110,7 +110,7 @@ public class DefaultAffirmPaymentService implements AffirmPaymentService{
       AffirmPaymentTransactionEntryModel authorisation = affirmPaymentTransactionStrategy.getAcceptedTransaction(order, PaymentTransactionType.AUTHORIZATION);
       AffirmPaymentServiceRequest request = new AffirmPaymentRequestServiceBuilder()
             .setOrder(order)
-            .setChargeId(authorisation.getProperties().get(ID))
+            .setTransactionObjectId(authorisation.getProperties().get(ID))
             .setTransactionType(PaymentTransactionType.CANCEL)
             .build();
 
@@ -136,7 +136,7 @@ public class DefaultAffirmPaymentService implements AffirmPaymentService{
 
       AffirmPaymentServiceRequest request = new AffirmRefundPaymentRequestServiceBuilder()
             .setOrder(order)
-            .setChargeId(authorisationEntry.getProperties().get(ID))
+            .setTransactionObjectId(authorisationEntry.getProperties().get(ID))
             .setTransactionType(PaymentTransactionType.REFUND_STANDALONE)
             .setRefundAmount(amount)
             .build();
@@ -155,7 +155,7 @@ public class DefaultAffirmPaymentService implements AffirmPaymentService{
 
       AffirmPaymentServiceRequest request = new AffirmUpdatePaymentRequestServiceBuilder()
             .setOrder(order)
-            .setChargeId(authorisationEntry.getProperties().get(ID))
+            .setTransactionObjectId(authorisationEntry.getProperties().get(ID))
             .setTransactionType(PaymentTransactionType.UPDATE)
             .setUpdateRequest(updateRequestData)
             .build();

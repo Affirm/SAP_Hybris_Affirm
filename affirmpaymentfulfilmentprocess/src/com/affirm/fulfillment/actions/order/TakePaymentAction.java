@@ -96,7 +96,7 @@ public class TakePaymentAction extends AbstractSimpleDecisionAction<OrderProcess
          AffirmPaymentServiceRequest request = new AffirmPaymentRequestServiceBuilder<>()
                .setOrder(order)
                .setTransactionType(PaymentTransactionType.CAPTURE)
-               .setChargeId(authorisation.getProperties().get(ID))
+               .setTransactionObjectId(authorisation.getProperties().get(ID))
                .build();
 
          AffirmPaymentServiceResult paymentServiceResult = affirmPaymentServiceExecutor.execute(request);

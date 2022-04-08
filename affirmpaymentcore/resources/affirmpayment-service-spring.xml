@@ -33,7 +33,7 @@
     <bean abstract="true" id="defaultAffirmPaymentEndpointStrategy" class="com.affirm.payment.service.executor.strategy.DefaultAffirmPaymentEndpointStrategy">
         <property name="mapping">
             <map>
-                <entry key="CHARGE_ID" value="chargeId" />
+                <entry key="TRANSACTION_OBJECT_ID" value="transactionObjectId" />
             </map>
         </property>
     </bean>
