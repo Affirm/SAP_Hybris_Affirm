@@ -4,7 +4,7 @@ public interface AffirmPaymentConstants {
 
    public static final String ORDER = "order";
    public static final String ORDER_ID = "order_id" ;
-   public static final String CHARGE_ID = "chargeId";
+   public static final String TRANSACTION_OBJECT_ID = "transactionObjectId";
    public static final String TRANSACTION = "transaction";
    public static final String REQUEST_ID = "request_id";
 

@@ -30,9 +30,9 @@ public class AffirmPaymentRequestServiceBuilder<B extends AffirmPaymentRequestSe
       return (B) this;
    }
 
-   public B setChargeId(final String chargeId)
+   public B setTransactionObjectId(final String transactionObjectId)
    {
-      affirmPaymentServiceRequest.addParam(AffirmPaymentConstants.CHARGE_ID, chargeId);
+      affirmPaymentServiceRequest.addParam(AffirmPaymentConstants.TRANSACTION_OBJECT_ID, transactionObjectId);
       return (B) this;
    }
 
