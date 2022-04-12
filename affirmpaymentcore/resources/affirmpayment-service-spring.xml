@@ -97,7 +97,7 @@
         </property>
         <property name="affirmPaymentResponseStrategy">
             <bean class="com.affirm.payment.service.executor.response.AffirmProperyPresentPaymentResponseStrategy" >
-                <property name="property" value="transaction_id" />
+                <property name="property" value="id" />
             </bean>
         </property>
     </bean>
@@ -122,7 +122,7 @@
         </property>
         <property name="affirmPaymentResponseStrategy">
             <bean class="com.affirm.payment.service.executor.response.AffirmProperyPresentPaymentResponseStrategy" >
-                <property name="property" value="transaction_id" />
+                <property name="property" value="id" />
             </bean>
         </property>
     </bean>
