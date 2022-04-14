@@ -123,14 +123,18 @@ public class DefaultAffirmPaymentService implements AffirmPaymentService{
    @Override public boolean refundOrder(OrderModel order, BigDecimal amount) {
       AffirmPaymentTransactionEntryModel authorisationEntry = affirmPaymentTransactionStrategy.getAcceptedTransaction(order, PaymentTransactionType.AUTHORIZATION);
       AffirmPaymentTransactionEntryModel captureEntry = affirmPaymentTransactionStrategy.getAcceptedTransaction(order, PaymentTransactionType.CAPTURE);
-      if(authorisationEntry == null || captureEntry == null){
+      int int_amount = amount.intValue();
+
+      if(authorisationEntry == null || captureEntry == null) {
          throw new AffirmPaymentException(AffirmPaymentConstants.REASON_CODE.INVALID_DATA, "Refund is not possible as authorisation and / or capture entry is not exist.");
       }
-       if(amount != null) {
-           amount = amount.multiply(BigDecimal.valueOf(100));
-       }
 
-       if(!affirmPaymentCoreService.isRefundPossible(order, amount)){
+      if(amount != null) {
+         amount = amount.multiply(BigDecimal.valueOf(100));
+         int_amount = amount.intValue();
+      }
+
+      if(!affirmPaymentCoreService.isRefundPossible(order, amount)){
          throw new AffirmPaymentException(AffirmPaymentConstants.REASON_CODE.INVALID_DATA, "It is not possible to refund more that the order total.");
       }
 
@@ -138,7 +142,7 @@ public class DefaultAffirmPaymentService implements AffirmPaymentService{
             .setOrder(order)
             .setTransactionObjectId(authorisationEntry.getProperties().get(ID))
             .setTransactionType(PaymentTransactionType.REFUND_STANDALONE)
-            .setRefundAmount(amount)
+            .setRefundAmount(int_amount)
             .build();
 
       AffirmPaymentServiceResult paymentServiceResult = affirmPaymentServiceExecutor.execute(request);
