@@ -1,4 +1,4 @@
-AFFIRM Payment Extension
+Affirm Payment Extension
 ----------------------------
 
 **Overview**
