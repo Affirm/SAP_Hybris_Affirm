@@ -1,4 +1,4 @@
-Affirm Payment Extension
+Affirm Hybris Extension
 ----------------------------
 
 **Overview**
