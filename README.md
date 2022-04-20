@@ -82,6 +82,7 @@ The source will need to be downloaded locally from the repo (click [here](https:
   ]
 }
 [/block]
+
 2. Add `/checkout/affirm/authorise` to your `csrf.allowed.url.patterns` property.
 [block:code]
 {
@@ -102,53 +103,14 @@ If you have already performed full initialization then you need to update your H
 
 1\.  Open web browser, go to **hAC →  Platform →  Update**.
 2\.  Deselect the checkbox stating `Create essential data"`.
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/ebd4579-create-essential-data.png",
-        "create-essential-data.png",
-        550,
-        186,
-        "#e9eaea"
-      ]
-    }
-  ]
-}
-[/block]
+![essentialdata](readme_images/ebd4579-create-essential-data.png)
+
 3\.  Select the checkboxes next to `affirmpaymentcore,affirmpaymentfulfilmentprocess` and `affirmpaymentaddon`
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/fb35eb6-3-select-checkboxes.png",
-        "3-select-checkboxes.png",
-        550,
-        95,
-        "#d6d7d8"
-      ]
-    }
-  ]
-}
-[/block]
-4\.  Click on the **Update **button to update the Hybris system.
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/063a5dd-hybris_vcn_update_button.png",
-        "hybris_vcn_update_button.png",
-        550,
-        274,
-        "#bbc0c9"
-      ]
-    }
-  ]
-}
-[/block]
+![selectcheckboxes](readme_images/fb35eb6-3-select-checkboxes.png)
+
+4\.  Click on the **Update button to update the Hybris system.**
+
+![vcnupdatebutton](readme_images/063a5dd-hybris_vcn_update_button.png)
 
 **2. Activate and configure Affirm as a payment option**
 After installing `affirmpaymentaddon` successfully, you can now login to Hybris backoffice to set up the Affirm configuration and assign it to specific sites in Hybris.
@@ -163,37 +125,10 @@ After installing `affirmpaymentaddon` successfully, you can now login to Hybris 
 }
 [/block]
 To view or edit the Affirm configuration, within Hybris Backoffice, go to **WCMS → Website → ADMINISTRATION → Affirm Config Container for CMSSite**.
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/adfd689-hybris_vcn_admin.png",
-        "hybris_vcn_admin.png",
-        1734,
-        852,
-        "#bdc4cc"
-      ]
-    }
-  ]
-}
-[/block]
+![vcnadmin](readme_images/adfd689-hybris_vcn_admin.png)
+
 3\.  Edit Affirm Payments Configuration Fields
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/c5c470a-hybris_vcn_payments_config.png",
-        "hybris_vcn_payments_config.png",
-        1594,
-        1112,
-        "#f3f5f6"
-      ]
-    }
-  ]
-}
-[/block]
+![vcnpayments](readme_images/c5c470a-hybris_vcn_payments_config.png)
 
 [block:parameters]
 {
@@ -229,53 +164,13 @@ Adding Affirm promotional messaging is a required integration step, and you shou
 
 1\.  Access the Affirm configuration outlined in section 2, **go to WCMS → Website → ADMINISTRATION → Affirm Config Container for CMSSite**
 2\.  Double click on the Affirm Page Config
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/5ac6897-hybris_affirm_config.png",
-        "hybris_affirm_config.png",
-        1711,
-        1191,
-        "#f3f4f5"
-      ]
-    }
-  ]
-}
-[/block]
+![hybrisaffirmconfig](readme_images/5ac6897-hybris_affirm_config.png)
+
 3\.  To enable Affirm promotional messaging, set Affirm Promotion Flag to `True` and click **Save**. Click on a value under List of Affirm Promotion Message for additional configuration.
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/1b418eb-hybris_affirm101.png",
-        "hybris_affirm101.png",
-        1496,
-        1042,
-        "#f2f3f4"
-      ]
-    }
-  ]
-}
-[/block]
+![hybrisaffirm101](readme_images/1b418eb-hybris_affirm101.png)
+
 4\.  Scroll down to the administration settings and click Save to save any edits.
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/cae1214-hybris_affirm_promo101.png",
-        "hybris_affirm_promo101.png",
-        985,
-        688,
-        "#e5e7e9"
-      ]
-    }
-  ]
-}
-[/block]
+![hybrisaffirmpromo101](readme_images/cae1214-hybris_affirm_promo101.png)
 
 [block:parameters]
 {
@@ -296,37 +191,10 @@ Adding Affirm promotional messaging is a required integration step, and you shou
 It is possible to restrict Affirm as a payment option on the checkout page based on minimum or maximum cart totals. If you want Affirm to be displayed for all cart thresholds, this step can be skipped.
 
 1\.  To edit /view thresholds login to Backoffice with admin credentials and navigate to Price Settings -> Payment Modes and select affirm. Select the Administration tab and scroll down to Thresholds settings.
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/68bad32-hybris_threshold_settings.png",
-        "hybris_threshold_settings.png",
-        1431,
-        614,
-        "#c5c5c8"
-      ]
-    }
-  ]
-}
-[/block]
+![hybristhresholdsettings](readme_images/68bad32-hybris_threshold_settings.png)
+
 2\.  To edit threshold, select the `PaymentThreshold` object from the list. Select `True` to set the minimum threshold and `False` to set the maximum threshold. Set the threshold in the **Thresdhold amount** field.
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/d78455f-hybris_payment_threshhold.png",
-        "hybris_payment_threshhold.png",
-        1438,
-        1102,
-        "#f0f2f3"
-      ]
-    }
-  ]
-}
-[/block]
+![hybrispaymentthreshold](readme_images/d78455f-hybris_payment_threshhold.png)
 
 **4. Review your Order Management functions**
 Processing orders (void, refund, and partial refund) in Hybris updates the order status in the Affirm dashboard. While you can process orders in the dashboard, we strongly recommend using Hybris BackOffice to keep order status synced with Affirm.  
@@ -342,21 +210,8 @@ Before deploying the Affirm integration to your production site, Affirm will nee
 1\.  Retrieve your live API keys at <https://affirm.com/dashboard/#/apikeys>
 2\.  Access the Affirm configuration outlined in section 2, go to **WCMS → Website → ADMINISTRATION → Affirm Config Container for CMSSite**
 3\.  Set the **Sandbox Mode** to `False` (1) and update the Affirm Private Key (2) and Public Key with the live API keys from your dashboard. Click **SAVE**.
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/882591f-hybirs_save_live_environment.png",
-        "hybirs_save_live_environment.png",
-        1594,
-        1112,
-        "#f3f4f5"
-      ]
-    }
-  ]
-}
-[/block]
+![hybrissavelive]9readme_images/882591f-hybirs_save_live_environment.png)
+
 **Launch to production**
 
 After you've connected to our live environment and we've tested your integration, you're ready to deploy to your production environment and offer Affirm as a payment option to your customers.
