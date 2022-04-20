@@ -1,8 +1,6 @@
 AFFIRM Payment Extension
 ----------------------------
 
-This project is to define an extension to integrate affirm payment extension with backend, frontend and backoffice integrations
-
 **Overview**
 This guide describes how to integrate Affirm into your Hybris platform so that you can provide Affirm as a payment option to your customers. After integrating Affirm, your Hybris site will:
 
