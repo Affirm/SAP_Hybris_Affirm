@@ -26,11 +26,8 @@ You should have received an email inviting you to create an Affirm account. [Cl
 Develop and test the Affirm integration in your development environment connected to our sandbox. To use our sandbox, retrieve your sandbox API keys at <https://sandbox.affirm.com/dashboard/#/apikeys> for use during integration.
 
 After development and testing, you'll need to update your integration to use your live API keys, which you can find at <https://affirm.com/dashboard/#/apikeys>.
-[block:api-header]
-{
-  "title": "Install"
-}
-[/block]
+
+**Install**
 Installing Affirm on Hybris requires downloading the add-on, updating localextensions.xml, running the installation command and rebuilding/updating the system.
 
 **Download Add-on**
@@ -153,11 +150,7 @@ If you have already performed full initialization then you need to update your H
 }
 [/block]
 
-[block:api-header]
-{
-  "title": "2. Activate and configure Affirm as a payment option"
-}
-[/block]
+**2. Activate and configure Affirm as a payment option**
 After installing `affirmpaymentaddon` successfully, you can now login to Hybris backoffice to set up the Affirm configuration and assign it to specific sites in Hybris.
 
 1\.  Login with Admin credentials to backoffice. 
@@ -229,11 +222,7 @@ To view or edit the Affirm configuration, within Hybris Backoffice, go to **WC
 }
 [/block]
 
-[block:api-header]
-{
-  "title": "3. Configure Affirm promotional messaging"
-}
-[/block]
+**3. Configure Affirm promotional messaging**
 Affirm promotional messaging components---monthly payment messaging and educational modals---show customers how they can use Affirm to finance their purchases. Properly placed promotional messaging helps drive increased AOV and conversion.
 
 Adding Affirm promotional messaging is a required integration step, and you should complete it before testing your integration. [Click here for information about adding Affirm promotional messaging](doc:placement).
@@ -339,23 +328,15 @@ It is possible to restrict Affirm as a payment option on the checkout page base
 }
 [/block]
 
-[block:api-header]
-{
-  "title": "4. Review your Order Management functions"
-}
-[/block]
+**4. Review your Order Management functions**
 Processing orders (void, refund, and partial refund) in Hybris updates the order status in the Affirm dashboard. While you can process orders in the dashboard, we strongly recommend using Hybris BackOffice to keep order status synced with Affirm.  
-[block:api-header]
-{
-  "title": "5. Coordinate testing with Affirm"
-}
-[/block]
+
+**5. Coordinate testing with Affirm**
 Before deploying the Affirm integration to your production site, Affirm will need to test it in your development or staging environment connected to our live environment. Contact your Integration Consultant or <merchanthelp@affirm.com> to coordinate this test.
-[block:api-header]
-{
-  "title": "6. Deploy to production"
-}
-[/block]
+
+
+**6. Deploy to production**
+
 **Connect to the live Affirm environment**
 
 1\.  Retrieve your live API keys at <https://affirm.com/dashboard/#/apikeys>
