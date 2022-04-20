@@ -2,6 +2,7 @@ AFFIRM Payment Extension
 ----------------------------
 
 **Overview**
+
 This guide describes how to integrate Affirm into your Hybris platform so that you can provide Affirm as a payment option to your customers. After integrating Affirm, your Hybris site will:
 
 * Offer Affirm as payment option on the checkout page
