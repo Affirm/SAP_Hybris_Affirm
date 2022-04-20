@@ -210,7 +210,7 @@ Before deploying the Affirm integration to your production site, Affirm will nee
 1\.  Retrieve your live API keys at <https://affirm.com/dashboard/#/apikeys>
 2\.  Access the Affirm configuration outlined in section 2, go to **WCMS → Website → ADMINISTRATION → Affirm Config Container for CMSSite**
 3\.  Set the **Sandbox Mode** to `False` (1) and update the Affirm Private Key (2) and Public Key with the live API keys from your dashboard. Click **SAVE**.
-![hybrissavelive]9readme_images/882591f-hybirs_save_live_environment.png)
+![hybrissavelive](readme_images/882591f-hybirs_save_live_environment.png)
 
 **Launch to production**
 
