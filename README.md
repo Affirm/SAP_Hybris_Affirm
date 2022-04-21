@@ -13,14 +13,14 @@ This guide describes how to integrate Affirm into your Hybris platform so that 
 
 Before beginning integration, you should review:
 
-* [The transaction flow when buying with Affirm](page:transaction-flow) 
+* [The transaction flow when buying with Affirm](https://docs.affirm.com/developers/page/transaction-flow) 
 * Your current checkout process to understand how Affirm will affect operations and customer experience
-* [Settlement reports to know how to reconcile transactions with the deposits into your bank account](doc:settlement-reports)
-* [The timeline for receiving Affirm deposits into your bank account](doc:getting-paid)
+* [Settlement reports to know how to reconcile transactions with the deposits into your bank account](https://businesshub.affirm.com/hc/en-us/articles/4418064935188-Settlement-Reports)
+* [The timeline for receiving Affirm deposits into your bank account](https://businesshub.affirm.com/hc/en-us/articles/4418095166612-Getting-Paid)
 
 **Sandbox development**
 
-You should have received an email inviting you to create an Affirm account. [Click here for information about accessing your account](doc:dashboard#section-singing-into-your-account).
+You should have received an email inviting you to create an Affirm account. [Click here for information about accessing your account](https://docs.affirm.com/developers/docs/dashboard#section-singing-into-your-account).
 
 Develop and test the Affirm integration in your development environment connected to our sandbox. To use our sandbox, retrieve your sandbox API keys at <https://sandbox.affirm.com/dashboard/#/apikeys> for use during integration.
 
@@ -86,9 +86,11 @@ If you have already performed full initialization then you need to update your H
 1\.  Open web browser, go to **hAC →  Platform →  Update**.
 
 2\.  Deselect the checkbox stating `Create essential data"`.
+
 ![essentialdata](readme_images/ebd4579-create-essential-data.png)
 
 3\.  Select the checkboxes next to `affirmpaymentcore,affirmpaymentfulfilmentprocess` and `affirmpaymentaddon`
+
 ![selectcheckboxes](readme_images/fb35eb6-3-select-checkboxes.png)
 
 4\.  Click on the **Update button to update the Hybris system.**
@@ -107,10 +109,13 @@ After installing `affirmpaymentaddon` successfully, you can now login to Hybris 
 {% note %}
 **Note:** Changes to the Affirm settings for BaseSite are made within AffirmConfigContainer, which is the container Affirm-related configurations. AffirmConfigContainer is added as an attribute to BaseSite to support Affirm.
 {% endnote %}
+
 To view or edit the Affirm configuration, within Hybris Backoffice, go to **WCMS → Website → ADMINISTRATION → Affirm Config Container for CMSSite**.
+
 ![vcnadmin](readme_images/adfd689-hybris_vcn_admin.png)
 
 3\.  Edit Affirm Payments Configuration Fields
+
 ![vcnpayments](readme_images/c5c470a-hybris_vcn_payments_config.png)
 
 | Attribute                       | Description                                                                                                                                                    |
@@ -126,44 +131,41 @@ To view or edit the Affirm configuration, within Hybris Backoffice, go to **WC
 | **List of Affirm Page Config**. | Click to configure Affirm promotional messaging (outlined in the next section)                                                                                 |
 
 **3. Configure Affirm promotional messaging**
+
 Affirm promotional messaging components---monthly payment messaging and educational modals---show customers how they can use Affirm to finance their purchases. Properly placed promotional messaging helps drive increased AOV and conversion.
 
-Adding Affirm promotional messaging is a required integration step, and you should complete it before testing your integration. [Click here for information about adding Affirm promotional messaging](doc:placement).
+Adding Affirm promotional messaging is a required integration step, and you should complete it before testing your integration. [Click here for information about adding Affirm promotional messaging](https://docs.affirm.com/developers/docs/placement).
 
 1\.  Access the Affirm configuration outlined in section 2, **go to WCMS → Website → ADMINISTRATION → Affirm Config Container for CMSSite**
 
 2\.  Double click on the Affirm Page Config
+
 ![hybrisaffirmconfig](readme_images/5ac6897-hybris_affirm_config.png)
 
 3\.  To enable Affirm promotional messaging, set Affirm Promotion Flag to `True` and click **Save**. Click on a value under List of Affirm Promotion Message for additional configuration.
+
 ![hybrisaffirm101](readme_images/1b418eb-hybris_affirm101.png)
 
 4\.  Scroll down to the administration settings and click Save to save any edits.
+
 ![hybrisaffirmpromo101](readme_images/cae1214-hybris_affirm_promo101.png)
 
-[block:parameters]
-{
-  "data": {
-    "0-0": "Affirm Promotion Message Code",
-    "1-0": "Affirm Promotion Page Type",
-    "2-0": "AffirmPromoMessage.affirmPromotionMessage",
-    "0-1": "Promotion message code for these settings (should not be edited)",
-    "1-1": "Values are \"CATEGORY\", \"PDP\" (for product page), and \"CART\" page. This value refers to the page that this configuration is for.",
-    "2-1": "Edit this class to update attributes for Affirm's promotional messaging."
-  },
-  "cols": 2,
-  "rows": 3
-}
-[/block]
+| Attribute                                 | Description                                                                                                                           |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Affirm Promotion Message Code             | Promotion message code for these settings (should not be edited)                                                                      |
+| Affirm Promotion Page Type                | Values are \"CATEGORY\", \"PDP\" (for product page), and \"CART\" page. This value refers to the page that this configuration is for. |
+| AffirmPromoMessage.affirmPromotionMessage | Edit this class to update attributes for Affirm's promotional messaging.                                                              |
 
 **Configure price threshold for Affirm (optional)**
 
 It is possible to restrict Affirm as a payment option on the checkout page based on minimum or maximum cart totals. If you want Affirm to be displayed for all cart thresholds, this step can be skipped.
 
 1\.  To edit /view thresholds login to Backoffice with admin credentials and navigate to Price Settings -> Payment Modes and select affirm. Select the Administration tab and scroll down to Thresholds settings.
+
 ![hybristhresholdsettings](readme_images/68bad32-hybris_threshold_settings.png)
 
 2\.  To edit threshold, select the `PaymentThreshold` object from the list. Select `True` to set the minimum threshold and `False` to set the maximum threshold. Set the threshold in the **Thresdhold amount** field.
+
 ![hybrispaymentthreshold](readme_images/d78455f-hybris_payment_threshhold.png)
 
 **4. Review your Order Management functions**
@@ -180,6 +182,7 @@ Before deploying the Affirm integration to your production site, Affirm will nee
 1\.  Retrieve your live API keys at <https://affirm.com/dashboard/#/apikeys>
 2\.  Access the Affirm configuration outlined in section 2, go to **WCMS → Website → ADMINISTRATION → Affirm Config Container for CMSSite**
 3\.  Set the **Sandbox Mode** to `False` (1) and update the Affirm Private Key (2) and Public Key with the live API keys from your dashboard. Click **SAVE**.
+
 ![hybrissavelive](readme_images/882591f-hybirs_save_live_environment.png)
 
 **Launch to production**
