@@ -105,7 +105,7 @@ After installing `affirmpaymentaddon` successfully, you can now login to Hybris 
 
 **Updating Affirm Settings:**
 {% note %}
-**Updating Affirm Settings:** Changes to the Affirm settings for BaseSite are made within AffirmConfigContainer, which is the container Affirm-related configurations. AffirmConfigContainer is added as an attribute to BaseSite to support Affirm.
+**Note:** Changes to the Affirm settings for BaseSite are made within AffirmConfigContainer, which is the container Affirm-related configurations. AffirmConfigContainer is added as an attribute to BaseSite to support Affirm.
 {% endnote %}
 To view or edit the Affirm configuration, within Hybris Backoffice, go to **WCMS → Website → ADMINISTRATION → Affirm Config Container for CMSSite**.
 ![vcnadmin](readme_images/adfd689-hybris_vcn_admin.png)
@@ -113,32 +113,17 @@ To view or edit the Affirm configuration, within Hybris Backoffice, go to **WC
 3\.  Edit Affirm Payments Configuration Fields
 ![vcnpayments](readme_images/c5c470a-hybris_vcn_payments_config.png)
 
-[block:parameters]
-{
-  "data": {
-    "0-0": "**Affirm Payment mode enabled** ",
-    "1-0": "**Sandbox Mode** ",
-    "2-0": "**Authorize and Capture** ",
-    "3-0": "**Modal Mode** ",
-    "4-0": "**VCN mode** ",
-    "5-0": "**Analytics enabled** ",
-    "6-0": "**Affirm Private Key** ",
-    "7-0": "**Affirm Public Key** ",
-    "8-0": "**List of Affirm Page Config** ",
-    "0-1": "Set to `True` to enable Affirm as a payment method.",
-    "1-1": "Set to `True` to enable sandbox mode for development and testing.",
-    "2-1": "Set to `True` to automatically capture the payment at the time the order is placed. If set to `False`, the capture will happen during the fulfillment process.",
-    "3-1": "Set to `True` to enable modal checkout. Leave \"False\" to use the default, redirect checkout.",
-    "4-1": "Set to `True` only if you are using Affirm's VCN checkout.",
-    "5-1": "Set to `True` to enable Affirm to obtain analytics on the order confirmation page",
-    "6-1": "Affirm private API Key (use Sandbox private key if Sandbox Mode is enabled.",
-    "7-1": "Affirm public API Key (use Sandbox public key if Sandbox Mode is enabled.",
-    "8-1": "Click to configure Affirm promotional messaging (outlined in the next section)"
-  },
-  "cols": 2,
-  "rows": 9
-}
-[/block]
+| Attribute                       | Description                                                                                                                                                    |
+| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Affirm Payment mode enabled** | Set to `True` to enable Affirm as a payment method.                                                                                                            |
+| **Sandbox Mode**                | Set to `True` to enable sandbox mode for development and testing.                                                                                              |
+| **Authorize and Capture**       | Set to `True` to automatically capture the payment at the time the order is placed. If set to `False`, the capture will happen during the fulfillment process. |
+| **Modal Mode**                  | Set to `True` to enable modal checkout. Leave \"False\" to use the default, redirect checkout.                                                                 |
+| **VCN mode**                    | Set to `True` only if you are using Affirm's VCN checkout.                                                                                                     |
+| **Analytics enabled**           | Set to `True` to enable Affirm to obtain analytics on the order confirmation page                                                                              |
+| **Affirm Private Key**          | Affirm private API Key (use Sandbox private key if Sandbox Mode is enabled.)                                                                                   |
+| **Affirm Public Key**           | Affirm public API Key (use Sandbox public key if Sandbox Mode is enabled.)                                                                                     |
+| **List of Affirm Page Config**. | Click to configure Affirm promotional messaging (outlined in the next section)                                                                                 |
 
 **3. Configure Affirm promotional messaging**
 Affirm promotional messaging components---monthly payment messaging and educational modals---show customers how they can use Affirm to finance their purchases. Properly placed promotional messaging helps drive increased AOV and conversion.
