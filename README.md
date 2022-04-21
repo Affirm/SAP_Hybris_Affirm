@@ -60,19 +60,19 @@ The source will need to be downloaded locally from the repo (click [here](https:
 * Windows: `setantenv.bat\`
 * Unix: `. ./setantenv.sh`
 
-3.  Go to `<HYBRIS_HOME>/bin/platform` and run the installation add-on with the command:
+3\.  Go to `<HYBRIS_HOME>/bin/platform` and run the installation add-on with the command:
 ```shell
 ant addoninstall -Daddonnames="affirmpaymentaddon" -DaddonStorefront.yacceleratorstorefront="yacceleratorstorefront"
 ```
 
 **Rebuild the system**
 
-1. Go to `<HYBRIS_HOME>/bin/platform` and rebuild the system with the command: ant clean all.
+1\. Go to `<HYBRIS_HOME>/bin/platform` and rebuild the system with the command: ant clean all.
 ```shell
 ant clean all
 ```
 
-2. Add `/checkout/affirm/authorise` to your `csrf.allowed.url.patterns` property.
+2\. Add `/checkout/affirm/authorise` to your `csrf.allowed.url.patterns` property.
 ```shell
 csrf.allowed.url.patterns=/[^/]+(/[^?]*)+(sop/response)$,/[^/]+(/[^?]*)+(merchant_callback)$,/[^/]+(/[^?]*)+(hop/response)$,/[^/]+(/[^?]*)+(language)$,/[^/]+(/[^?]*)+(currency)$,/checkout/affirm/authorise
 ```
