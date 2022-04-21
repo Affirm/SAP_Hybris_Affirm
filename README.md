@@ -39,9 +39,13 @@ The source will need to be downloaded locally from the repo (click [here](https:
 **Update localextensions.xml**
 
 1\.  Check the presence of `<extension name="addonsupport" />` in the l`ocalextensions.xml` file
+
 2\.  Add extension `<extension name=" affirmpaymentaddon " />`
+
 3\.  Add extension `<extension name="affirmpaymentcore" />`
+
 4\.  Add extension `<extension name="'affirmpaymentfulfilmentprocess'" />`
+
 5\.  Check the presence of the target storefront extension
 
 **Run installation command**
@@ -55,45 +59,24 @@ The source will need to be downloaded locally from the repo (click [here](https:
 2\.  Go to `<HYBRIS_HOME>/bin/platform` and run the following command if it was not applied in this terminal:
 * Windows: `setantenv.bat\`
 * Unix: `. ./setantenv.sh`
+
 3.  Go to `<HYBRIS_HOME>/bin/platform` and run the installation add-on with the command:
-[block:code]
-{
-  "codes": [
-    {
-      "code": "ant addoninstall -Daddonnames=\" affirmpaymentaddon \" -\nDaddonStorefront.yacceleratorstorefront=\"yacceleratorstorefront\"",
-      "language": "shell",
-      "name": "Hybris command line"
-    }
-  ]
-}
-[/block]
+```shell
+ant addoninstall -Daddonnames="affirmpaymentaddon" -DaddonStorefront.yacceleratorstorefront="yacceleratorstorefront"
+```
+
 **Rebuild the system**
 
 1. Go to `<HYBRIS_HOME>/bin/platform` and rebuild the system with the command: ant clean all.
-[block:code]
-{
-  "codes": [
-    {
-      "code": "ant clean all",
-      "language": "shell",
-      "name": "Hybris command line"
-    }
-  ]
-}
-[/block]
+```shell
+ant clean all
+```
 
 2. Add `/checkout/affirm/authorise` to your `csrf.allowed.url.patterns` property.
-[block:code]
-{
-  "codes": [
-    {
-      "code": "csrf.allowed.url.patterns=/[^/]+(/[^?]*)+(sop/response)$,/[^/]+(/[^?]*)+(merchant_callback)$,/[^/]+(/[^?]*)+(hop/response)$,/[^/]+(/[^?]*)+(language)$,/[^/]+(/[^?]*)+(currency)$,/checkout/affirm/authorise",
-      "language": "shell",
-      "name": "Hybris command line"
-    }
-  ]
-}
-[/block]
+```shell
+csrf.allowed.url.patterns=/[^/]+(/[^?]*)+(sop/response)$,/[^/]+(/[^?]*)+(merchant_callback)$,/[^/]+(/[^?]*)+(hop/response)$,/[^/]+(/[^?]*)+(language)$,/[^/]+(/[^?]*)+(currency)$,/checkout/affirm/authorise
+```
+
 **Update the system**
 
 After the previous step you may need to perform full initialization through Hybris Administration Console (hAC) if this is the first installation of Hybris.
@@ -101,6 +84,7 @@ After the previous step you may need to perform full initialization through Hybr
 If you have already performed full initialization then you need to update your Hybris system as follows:
 
 1\.  Open web browser, go to **hAC →  Platform →  Update**.
+
 2\.  Deselect the checkbox stating `Create essential data"`.
 ![essentialdata](readme_images/ebd4579-create-essential-data.png)
 
@@ -112,17 +96,17 @@ If you have already performed full initialization then you need to update your H
 ![vcnupdatebutton](readme_images/063a5dd-hybris_vcn_update_button.png)
 
 **2. Activate and configure Affirm as a payment option**
+
 After installing `affirmpaymentaddon` successfully, you can now login to Hybris backoffice to set up the Affirm configuration and assign it to specific sites in Hybris.
 
 1\.  Login with Admin credentials to backoffice. 
+
 2\.  View **Affirm Payments** configuration
-[block:callout]
-{
-  "type": "info",
-  "body": "Changes to the Affirm settings for BaseSite are made within AffirmConfigContainer, which is the container Affirm-related configurations. AffirmConfigContainer is added as an attribute to BaseSite to support Affirm.",
-  "title": "Updating Affirm settings"
-}
-[/block]
+
+**Updating Affirm Settings:**
+{% note %}
+**Updating Affirm Settings:** Changes to the Affirm settings for BaseSite are made within AffirmConfigContainer, which is the container Affirm-related configurations. AffirmConfigContainer is added as an attribute to BaseSite to support Affirm.
+{% endnote %}
 To view or edit the Affirm configuration, within Hybris Backoffice, go to **WCMS → Website → ADMINISTRATION → Affirm Config Container for CMSSite**.
 ![vcnadmin](readme_images/adfd689-hybris_vcn_admin.png)
 
@@ -162,6 +146,7 @@ Affirm promotional messaging components---monthly payment messaging and educatio
 Adding Affirm promotional messaging is a required integration step, and you should complete it before testing your integration. [Click here for information about adding Affirm promotional messaging](doc:placement).
 
 1\.  Access the Affirm configuration outlined in section 2, **go to WCMS → Website → ADMINISTRATION → Affirm Config Container for CMSSite**
+
 2\.  Double click on the Affirm Page Config
 ![hybrisaffirmconfig](readme_images/5ac6897-hybris_affirm_config.png)
 
@@ -185,6 +170,7 @@ Adding Affirm promotional messaging is a required integration step, and you shou
   "rows": 3
 }
 [/block]
+
 **Configure price threshold for Affirm (optional)**
 
 It is possible to restrict Affirm as a payment option on the checkout page based on minimum or maximum cart totals. If you want Affirm to be displayed for all cart thresholds, this step can be skipped.
