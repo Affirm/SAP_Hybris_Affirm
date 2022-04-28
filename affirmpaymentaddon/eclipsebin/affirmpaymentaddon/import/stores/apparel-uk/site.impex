@@ -23,7 +23,7 @@ INSERT_UPDATE AffirmPageConfig;&affirmConfigCode;affirmConfigCode[unique=true];a
 ;AFFIRM1;AFFIRM101;AFFIRMMSG1,AFFIRMMSG2,AFFIRMMSG3;true
 
 INSERT_UPDATE AffirmConfigContainer;&affirmContainerCode;affirmContainerCode[unique=true];affirmPublicKey();affirmPageConfig(&affirmConfigCode);affirmPrivateKey;enabled[default=true];
-;AFFIRMCONFIG1;AFFIRMCONFIG100;MY92PIS7UI8QLQB1;AFFIRM1;CNGMEH8Hb8sHtPj0puA6r15134Cc4RmY;;
+;AFFIRMCONFIG1;AFFIRMCONFIG100;<Your Key Here>;AFFIRM1;<Your Key Here>;;
 
 UPDATE BaseSite;uid[unique=true];affirmConfigContainer(&affirmContainerCode)
 ;$siteUid;AFFIRMCONFIG1
