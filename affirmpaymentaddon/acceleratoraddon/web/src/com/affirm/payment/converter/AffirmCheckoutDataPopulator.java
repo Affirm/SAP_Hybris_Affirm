@@ -251,12 +251,12 @@ public class AffirmCheckoutDataPopulator implements Populator<CartModel, AffirmC
    private void populateAddress(AddressModel deliveryAddress, AffirmShippingData shipping) {
       AffirmAddressData addressData = new AffirmAddressData();
       addressData.setCity(deliveryAddress.getTown());
-      addressData.setLine1(deliveryAddress.getLine1());
-      addressData.setLine2(deliveryAddress.getLine2());
+      addressData.setStreet1(deliveryAddress.getLine1());
+      addressData.setStreet2(deliveryAddress.getLine2());
       addressData.setCountry(deliveryAddress.getCountry().getIsocode());
-      addressData.setZipcode(deliveryAddress.getPostalcode());
+      addressData.setPostal_code(deliveryAddress.getPostalcode());
       if(deliveryAddress.getRegion() != null){
-         addressData.setState(deliveryAddress.getRegion().getIsocodeShort());
+         addressData.setRegion1_code(deliveryAddress.getRegion().getIsocodeShort());
       }
       shipping.setAddress(addressData);
    }

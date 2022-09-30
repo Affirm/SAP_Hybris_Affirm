@@ -33,6 +33,7 @@ public class DefaultAffirmHTTPClient implements AffirmHTTPClient {
          request.setHeader(HttpHeaders.AUTHORIZATION, authHeader);
          request.addHeader("content-type", "application/json");
          request.addHeader("Idempotency-Key", idempotencyKey);
+         request.addHeader("Country-Code", "CAN");
          request.setEntity( new StringEntity(jsonString));
 
          HttpClient client = HttpClientBuilder.create().build();

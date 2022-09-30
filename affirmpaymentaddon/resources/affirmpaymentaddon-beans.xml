@@ -30,11 +30,11 @@
     </bean>
 
     <bean class="com.affirm.checkout.pojo.AffirmAddressData">
-        <property name="line1" type="String"/>
-        <property name="line2" type="String"/>
+        <property name="street1" type="String"/>
+        <property name="street2" type="String"/>
         <property name="city" type="String"/>
-        <property name="state" type="String"/>
-        <property name="zipcode" type="String"/>
+        <property name="region1_code" type="String"/>
+        <property name="postal_code" type="String"/>
         <property name="country" type="String"/>
     </bean>
 
