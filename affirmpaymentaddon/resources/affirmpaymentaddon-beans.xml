@@ -69,6 +69,8 @@
         <property name="shipping_amount" type="java.math.BigInteger"/>
         <property name="tax_amount" type="java.math.BigInteger"/>
         <property name="total" type="java.math.BigInteger"/>
+        <property name="currency" type="String"/>
+        <property name="country_code" type="String"/>
     </bean>
 
     <bean class="com.affirm.checkout.pojo.AffirmMetadata">
