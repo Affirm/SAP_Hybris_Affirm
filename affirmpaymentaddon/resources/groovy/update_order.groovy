@@ -17,11 +17,11 @@ data.setShippingCarrier("UPS");
 data.setShippingConfirmation("ASSEGW22S2S");
 data.setShipping(new AffirmShippingData());
 data.getShipping().setAddress(new AffirmAddressData());
-data.getShipping().getAddress().setLine1("700 8th Ave");
-data.getShipping().getAddress().setLine2("Room 221");
-data.getShipping().getAddress().setState("New York");
+data.getShipping().getAddress().setStreet1("700 8th Ave");
+data.getShipping().getAddress().setStreet2("Room 221");
+data.getShipping().getAddress().setRegion1_code("New York");
 data.getShipping().getAddress().setCity("New York");
-data.getShipping().getAddress().setZipcode("10037");
+data.getShipping().getAddress().setPostal_code("10037");
 data.getShipping().setName(new AffirmNameData());
 data.getShipping().getName().setFirst("Shine")
 data.getShipping().getName().setLast("Mathew")
