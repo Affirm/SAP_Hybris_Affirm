@@ -22,7 +22,7 @@ INSERT_UPDATE AffirmPromoMessage;&affirmPromoMessageCode;affirmPromoMessageCode[
 INSERT_UPDATE AffirmPageConfig;&affirmConfigCode;affirmConfigCode[unique=true];affirmPromoMessageList(&affirmPromoMessageCode);showAffirmPromotionFlag
 ;AFFIRM1;AFFIRM101;AFFIRMMSG1,AFFIRMMSG2,AFFIRMMSG3;true
 
-INSERT_UPDATE AffirmConfigContainer;&affirmContainerCode;affirmContainerCode[unique=true];affirmPublicKey();affirmPageConfig(&affirmConfigCode);affirmPrivateKey;enabled[default=true];
+INSERT_UPDATE AffirmConfigContainer;&affirmContainerCode;affirmContainerCode[unique=true];affirmPublicKey();affirmPublicKeyCA();affirmPageConfig(&affirmConfigCode);affirmPrivateKey;enabled[default=true];
 ;AFFIRMCONFIG1;AFFIRMCONFIG100;MY92PIS7UI8QLQB1;AFFIRM1;CNGMEH8Hb8sHtPj0puA6r15134Cc4RmY;;
 
 UPDATE BaseSite;uid[unique=true];affirmConfigContainer(&affirmContainerCode)
