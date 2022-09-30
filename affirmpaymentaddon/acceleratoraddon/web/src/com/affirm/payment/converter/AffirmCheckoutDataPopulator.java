@@ -77,6 +77,10 @@ public class AffirmCheckoutDataPopulator implements Populator<CartModel, AffirmC
       checkoutData.setShipping_amount(convertToBigInteger(cartModel.getDeliveryCost()));
       checkoutData.setTax_amount(convertToBigInteger(cartModel.getTotalTax()));
 
+      // TODO: Replace hardcoded currency
+      checkoutData.setCurrency("CAD");
+      checkoutData.setCountry_code("CAN");
+
       checkoutData.setTotal(convertToBigInteger(cartModel.getTotalIncludingTax()));
 
       populateDiscounts(cartModel, checkoutData);
