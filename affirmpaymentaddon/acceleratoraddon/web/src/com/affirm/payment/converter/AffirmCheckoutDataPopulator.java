@@ -5,6 +5,7 @@ import de.hybris.platform.acceleratorservices.urlresolver.SiteBaseUrlResolutionS
 import de.hybris.platform.commerceservices.customer.CustomerEmailResolutionService;
 import de.hybris.platform.commerceservices.url.impl.AbstractUrlResolver;
 import de.hybris.platform.converters.Populator;
+import de.hybris.platform.core.model.c2l.CurrencyModel;
 import de.hybris.platform.core.model.order.AbstractOrderEntryModel;
 import de.hybris.platform.core.model.order.CartModel;
 import de.hybris.platform.core.model.product.ProductModel;
@@ -44,7 +45,10 @@ public class AffirmCheckoutDataPopulator implements Populator<CartModel, AffirmC
 
    public static final String CHECKOUT_AFFIRM_CANCEL_URL = "/checkout/affirm/cancel";
    public static final String CHECKOUT_AFFIRM_CONFIRMATION_URL = "/checkout/affirm/authorise";
-
+   public static final String COUNTRY_CODE_USA = "USA";
+   public static final String COUNTRY_CODE_CAN = "CAN";
+   public static final String CURRENCY_CODE_CAD = "CAD";
+   public static final String CURRENCY_CODE_USD = "USD";
    public static final String POST = "POST";
    private static final Logger LOG = Logger.getLogger(AffirmCheckoutDataPopulator.class);
 
@@ -77,9 +81,21 @@ public class AffirmCheckoutDataPopulator implements Populator<CartModel, AffirmC
       checkoutData.setShipping_amount(convertToBigInteger(cartModel.getDeliveryCost()));
       checkoutData.setTax_amount(convertToBigInteger(cartModel.getTotalTax()));
 
-      // TODO: Replace hardcoded currency
-      checkoutData.setCurrency("CAD");
-      checkoutData.setCountry_code("CAN");
+      String countryCode = "";
+      String currencyCode = "";
+
+      if (((CurrencyModel)(cartModel).getCurrency()) != null) {
+         currencyCode = ((CurrencyModel)(cartModel).getCurrency()).getIsocode();
+      }
+
+      if (currencyCode == CURRENCY_CODE_CAD) {
+         countryCode = COUNTRY_CODE_CAN;
+      } else {
+         countryCode = COUNTRY_CODE_USA;
+      }
+
+      checkoutData.setCurrency(currencyCode);
+      checkoutData.setCountry_code(countryCode);
 
       checkoutData.setTotal(convertToBigInteger(cartModel.getTotalIncludingTax()));
 
