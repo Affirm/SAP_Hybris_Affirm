@@ -23,9 +23,9 @@ public class DefaultAffirmHTTPClient implements AffirmHTTPClient {
 
    private static final Logger LOG = LoggerFactory.getLogger(DefaultAffirmHTTPClient.class);
 
-   public String send(String endpointUrl, String jsonString, AffirmConfigContainerModel affirmConfigContainer, String idempotencyKey){
+   public String send(String endpointUrl, String jsonString, AffirmConfigContainerModel affirmConfigContainer, String idempotencyKey, String countryCode){
       try {
-
+         // TODO: Update public key and country code header based on order currency
          HttpPost request = new HttpPost(endpointUrl);
          String auth = affirmConfigContainer.getAffirmPublicKey() + ":" + affirmConfigContainer.getAffirmPrivateKey();
          byte[] encodedAuth = Base64.getEncoder().encode(auth.getBytes(StandardCharsets.ISO_8859_1));
@@ -33,7 +33,7 @@ public class DefaultAffirmHTTPClient implements AffirmHTTPClient {
          request.setHeader(HttpHeaders.AUTHORIZATION, authHeader);
          request.addHeader("content-type", "application/json");
          request.addHeader("Idempotency-Key", idempotencyKey);
-         request.addHeader("Country-Code", "CAN");
+         request.addHeader("Country-Code", countryCode);
          request.setEntity( new StringEntity(jsonString));
 
          HttpClient client = HttpClientBuilder.create().build();

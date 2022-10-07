@@ -12,8 +12,10 @@ public interface AffirmHTTPClient {
     * @param endpointUrl The server endpoint where the json will be sent
     * @param jsonString The JSON request to be sent
     * @param affirmConfigContainer Affirm configuration container to hold the authentication information
-    * @return Retunrs the response JSON returned by the server.
+    * @param idempotencyKey Idempotency key
+    * @param countryCode Country code
+    * @return Returns the response JSON returned by the server.
     */
-   String send(String endpointUrl, String jsonString, AffirmConfigContainerModel affirmConfigContainer, String idempotencyKey);
+   String send(String endpointUrl, String jsonString, AffirmConfigContainerModel affirmConfigContainer, String idempotencyKey, String countryCode);
 
 }

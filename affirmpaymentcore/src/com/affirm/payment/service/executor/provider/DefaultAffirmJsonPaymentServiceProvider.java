@@ -28,7 +28,9 @@ import java.util.Map;
 import java.util.Objects;
 
 public class DefaultAffirmJsonPaymentServiceProvider implements PaymentServiceProvider {
-
+   public static final String COUNTRY_CODE_USA = "USA";
+   public static final String COUNTRY_CODE_CAN = "CAN";
+   public static final String CURRENCY_CODE_CAD = "CAD";
    private static final Logger LOG = Logger.getLogger(DefaultAffirmJsonPaymentServiceProvider.class);
 
    private AffirmPaymentEndpointStrategy affirmPaymentEndpointStrategy;
@@ -60,7 +62,15 @@ public class DefaultAffirmJsonPaymentServiceProvider implements PaymentServicePr
          LOG.debug(String.format("send '%s' json request to %s endpoint ", jsonRequest, endpointUrl));
       }
 
-      String result = affirmHTTPClient.send(endpointUrl, jsonRequest, affirmConfiguration, idempotency_key);
+      String currencyCode = cart.getCurrency().getIsocode();
+      String countryCode = "";
+      if (currencyCode == CURRENCY_CODE_CAD) {
+         countryCode = COUNTRY_CODE_CAN;
+      } else {
+         countryCode = COUNTRY_CODE_USA;
+      }
+
+      String result = affirmHTTPClient.send(endpointUrl, jsonRequest, affirmConfiguration, idempotency_key, countryCode);
 
       if (LOG.isDebugEnabled()){
          LOG.debug(String.format("result: '%s'", result));
