@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 28 Jan 2020, 23:09:53                       ---
+ * --- Generated at Oct 19, 2022, 10:16:29 PM                   ---
  * ----------------------------------------------------------------
  */
 package com.affirm.payment.jalo;
@@ -32,8 +32,12 @@ public abstract class GeneratedAffirmConfigContainer extends GenericItem
 	public static final String MODALMODE = "modalMode";
 	/** Qualifier of the <code>AffirmConfigContainer.affirmPublicKey</code> attribute **/
 	public static final String AFFIRMPUBLICKEY = "affirmPublicKey";
+	/** Qualifier of the <code>AffirmConfigContainer.affirmPublicKeyCA</code> attribute **/
+	public static final String AFFIRMPUBLICKEYCA = "affirmPublicKeyCA";
 	/** Qualifier of the <code>AffirmConfigContainer.affirmPrivateKey</code> attribute **/
 	public static final String AFFIRMPRIVATEKEY = "affirmPrivateKey";
+	/** Qualifier of the <code>AffirmConfigContainer.affirmPrivateKeyCA</code> attribute **/
+	public static final String AFFIRMPRIVATEKEYCA = "affirmPrivateKeyCA";
 	/** Qualifier of the <code>AffirmConfigContainer.sandboxMode</code> attribute **/
 	public static final String SANDBOXMODE = "sandboxMode";
 	/** Qualifier of the <code>AffirmConfigContainer.affirmPageConfig</code> attribute **/
@@ -51,7 +55,9 @@ public abstract class GeneratedAffirmConfigContainer extends GenericItem
 		tmp.put(AUTHANDCAPTURE, AttributeMode.INITIAL);
 		tmp.put(MODALMODE, AttributeMode.INITIAL);
 		tmp.put(AFFIRMPUBLICKEY, AttributeMode.INITIAL);
+		tmp.put(AFFIRMPUBLICKEYCA, AttributeMode.INITIAL);
 		tmp.put(AFFIRMPRIVATEKEY, AttributeMode.INITIAL);
+		tmp.put(AFFIRMPRIVATEKEYCA, AttributeMode.INITIAL);
 		tmp.put(SANDBOXMODE, AttributeMode.INITIAL);
 		tmp.put(AFFIRMPAGECONFIG, AttributeMode.INITIAL);
 		tmp.put(VCNMODE, AttributeMode.INITIAL);
@@ -174,6 +180,42 @@ public abstract class GeneratedAffirmConfigContainer extends GenericItem
 	}
 	
 	/**
+	 * <i>Generated method</i> - Getter of the <code>AffirmConfigContainer.affirmPrivateKeyCA</code> attribute.
+	 * @return the affirmPrivateKeyCA
+	 */
+	public String getAffirmPrivateKeyCA(final SessionContext ctx)
+	{
+		return (String)getProperty( ctx, AFFIRMPRIVATEKEYCA);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>AffirmConfigContainer.affirmPrivateKeyCA</code> attribute.
+	 * @return the affirmPrivateKeyCA
+	 */
+	public String getAffirmPrivateKeyCA()
+	{
+		return getAffirmPrivateKeyCA( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>AffirmConfigContainer.affirmPrivateKeyCA</code> attribute. 
+	 * @param value the affirmPrivateKeyCA
+	 */
+	public void setAffirmPrivateKeyCA(final SessionContext ctx, final String value)
+	{
+		setProperty(ctx, AFFIRMPRIVATEKEYCA,value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>AffirmConfigContainer.affirmPrivateKeyCA</code> attribute. 
+	 * @param value the affirmPrivateKeyCA
+	 */
+	public void setAffirmPrivateKeyCA(final String value)
+	{
+		setAffirmPrivateKeyCA( getSession().getSessionContext(), value );
+	}
+	
+	/**
 	 * <i>Generated method</i> - Getter of the <code>AffirmConfigContainer.affirmPublicKey</code> attribute.
 	 * @return the affirmPublicKey
 	 */
@@ -207,6 +249,42 @@ public abstract class GeneratedAffirmConfigContainer extends GenericItem
 	public void setAffirmPublicKey(final String value)
 	{
 		setAffirmPublicKey( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>AffirmConfigContainer.affirmPublicKeyCA</code> attribute.
+	 * @return the affirmPublicKeyCA
+	 */
+	public String getAffirmPublicKeyCA(final SessionContext ctx)
+	{
+		return (String)getProperty( ctx, AFFIRMPUBLICKEYCA);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>AffirmConfigContainer.affirmPublicKeyCA</code> attribute.
+	 * @return the affirmPublicKeyCA
+	 */
+	public String getAffirmPublicKeyCA()
+	{
+		return getAffirmPublicKeyCA( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>AffirmConfigContainer.affirmPublicKeyCA</code> attribute. 
+	 * @param value the affirmPublicKeyCA
+	 */
+	public void setAffirmPublicKeyCA(final SessionContext ctx, final String value)
+	{
+		setProperty(ctx, AFFIRMPUBLICKEYCA,value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>AffirmConfigContainer.affirmPublicKeyCA</code> attribute. 
+	 * @param value the affirmPublicKeyCA
+	 */
+	public void setAffirmPublicKeyCA(final String value)
+	{
+		setAffirmPublicKeyCA( getSession().getSessionContext(), value );
 	}
 	
 	/**

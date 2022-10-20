@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 28 Jan 2020, 23:09:53                       ---
+ * --- Generated at Oct 19, 2022, 10:16:29 PM                   ---
  * ----------------------------------------------------------------
  */
 package com.affirm.fulfillment.constants;
@@ -9,7 +9,7 @@ package com.affirm.fulfillment.constants;
 /**
  * @deprecated since ages - use constants in Model classes instead
  */
-@Deprecated
+@Deprecated(since = "ages", forRemoval = false)
 @SuppressWarnings({"unused","cast"})
 public class GeneratedAffirmpaymentfulfilmentprocessConstants
 {
