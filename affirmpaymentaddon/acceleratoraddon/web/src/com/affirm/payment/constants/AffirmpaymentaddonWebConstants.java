@@ -35,7 +35,6 @@ public final class AffirmpaymentaddonWebConstants
 	}
 
 	public static final String AFFIRM_PUBLIC_KEY="affirm_public_key";
-	public static final String AFFIRM_PUBLIC_KEY_CA="affirm_public_key_ca";
 	public static final String AFFIRM_SITE_URL="affirm_site_url";
 	public static final String AFFIRM_SESSION_ID="affirm_session_id";
 	public static final String AFFIRM_LOCALE="affirm_locale";

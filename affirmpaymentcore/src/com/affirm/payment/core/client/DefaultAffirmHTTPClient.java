@@ -23,11 +23,17 @@ public class DefaultAffirmHTTPClient implements AffirmHTTPClient {
 
    private static final Logger LOG = LoggerFactory.getLogger(DefaultAffirmHTTPClient.class);
 
+   public static final String COUNTRY_CODE_CAN = "CAN";
+
    public String send(String endpointUrl, String jsonString, AffirmConfigContainerModel affirmConfigContainer, String idempotencyKey, String countryCode){
       try {
-         // TODO: Update public key and country code header based on order currency
          HttpPost request = new HttpPost(endpointUrl);
-         String auth = affirmConfigContainer.getAffirmPublicKey() + ":" + affirmConfigContainer.getAffirmPrivateKey();
+         String auth = "";
+         if (countryCode.equals(COUNTRY_CODE_CAN)) {
+            auth = affirmConfigContainer.getAffirmPublicKeyCA() + ":" + affirmConfigContainer.getAffirmPrivateKeyCA();
+         } else {
+            auth = affirmConfigContainer.getAffirmPublicKey() + ":" + affirmConfigContainer.getAffirmPrivateKey();
+         }
          byte[] encodedAuth = Base64.getEncoder().encode(auth.getBytes(StandardCharsets.ISO_8859_1));
          String authHeader = "Basic " + new String(encodedAuth);
          request.setHeader(HttpHeaders.AUTHORIZATION, authHeader);

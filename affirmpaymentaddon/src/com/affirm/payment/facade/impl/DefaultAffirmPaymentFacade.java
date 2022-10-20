@@ -72,7 +72,7 @@ public class DefaultAffirmPaymentFacade implements AffirmPaymentFacade {
 
    @Override public boolean isAffirmPaymentEnabled() {
       CMSSiteModel siteModel = cmsSiteService.getCurrentSite();
-      return siteModel.getAffirmConfigContainer() != null && siteModel.getAffirmConfigContainer().isEnabled() && StringUtils.isNotEmpty(siteModel.getAffirmConfigContainer().getAffirmPublicKey());
+      return siteModel.getAffirmConfigContainer() != null && siteModel.getAffirmConfigContainer().isEnabled() && (StringUtils.isNotEmpty(siteModel.getAffirmConfigContainer().getAffirmPublicKey()) || StringUtils.isNotEmpty(siteModel.getAffirmConfigContainer().getAffirmPublicKeyCA()));
    }
 
    @Override public boolean refundOrder(String orderId, BigDecimal amount) {

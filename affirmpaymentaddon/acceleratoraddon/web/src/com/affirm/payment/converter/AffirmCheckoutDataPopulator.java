@@ -88,7 +88,7 @@ public class AffirmCheckoutDataPopulator implements Populator<CartModel, AffirmC
          currencyCode = ((CurrencyModel)(cartModel).getCurrency()).getIsocode();
       }
 
-      if (currencyCode == CURRENCY_CODE_CAD) {
+      if (currencyCode.equals(CURRENCY_CODE_CAD)) {
          countryCode = COUNTRY_CODE_CAN;
       } else {
          countryCode = COUNTRY_CODE_USA;

@@ -56,8 +56,8 @@ public class AffirmExportJsPropertiesBeforeViewHandler extends BeforeViewJsProps
         if(affirmConfigContainer == null){
            return viewName;
         }
-        String affirmPublicKey = affirmConfigContainer.getAffirmPublicKey();
         String affirmSiteUrl = affirmConfigContainer.getAffirmScriptUrl();
+        String affirmPublicKey = "";
         String affirmCountryCode = "";
         String affirmLocale = "";
         String modelCurrency = "";
@@ -68,16 +68,18 @@ public class AffirmExportJsPropertiesBeforeViewHandler extends BeforeViewJsProps
             modelLanguage = ((LanguageData) (model.get(CURRENT_LANGUAGE))).getIsocode();
         }
 
-        if (modelCurrency == CURRENCY_CAD) {
-            if (modelLanguage == LANG_FR) {
+        if (modelCurrency.equals(CURRENCY_CAD)) {
+            if (modelLanguage.equals(LANG_FR)) {
                 affirmLocale = LOCALE_FR_CA;
             } else {
                 affirmLocale = LOCALE_EN_CA;
             }
             affirmCountryCode = COUNTRY_CODE_CAN;
+            affirmPublicKey = affirmConfigContainer.getAffirmPublicKeyCA();
         } else {
             affirmCountryCode = COUNTRY_CODE_USA;
             affirmLocale = LOCALE_EN_US;
+            affirmPublicKey = affirmConfigContainer.getAffirmPublicKey();
         }
 
         List<JavaScriptVariableData> javaScriptVariableData = jsVariables.get(super.getMessageSource().getAddOnName());
