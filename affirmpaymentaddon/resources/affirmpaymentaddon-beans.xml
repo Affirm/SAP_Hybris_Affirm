@@ -30,11 +30,11 @@
     </bean>
 
     <bean class="com.affirm.checkout.pojo.AffirmAddressData">
-        <property name="line1" type="String"/>
-        <property name="line2" type="String"/>
+        <property name="street1" type="String"/>
+        <property name="street2" type="String"/>
         <property name="city" type="String"/>
-        <property name="state" type="String"/>
-        <property name="zipcode" type="String"/>
+        <property name="region1_code" type="String"/>
+        <property name="postal_code" type="String"/>
         <property name="country" type="String"/>
     </bean>
 
@@ -69,6 +69,8 @@
         <property name="shipping_amount" type="java.math.BigInteger"/>
         <property name="tax_amount" type="java.math.BigInteger"/>
         <property name="total" type="java.math.BigInteger"/>
+        <property name="currency" type="String"/>
+        <property name="country_code" type="String"/>
     </bean>
 
     <bean class="com.affirm.checkout.pojo.AffirmMetadata">

@@ -153,7 +153,12 @@
 					<attribute qualifier="affirmPublicKey" type="java.lang.String">
 						<persistence type="property" />
 					</attribute>
+					<attribute qualifier="affirmPublicKeyCA" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
                     <attribute qualifier="affirmPrivateKey" type="java.lang.String">
+						<persistence type="property" />
+					</attribute><attribute qualifier="affirmPrivateKeyCA" type="java.lang.String">
 						<persistence type="property" />
 					</attribute>
 					<attribute qualifier="affirmScriptUrl" type="java.lang.String">

@@ -19,6 +19,8 @@ import de.hybris.platform.cms2.model.site.CMSSiteModel;
 import de.hybris.platform.cms2.servicelayer.services.CMSSiteService;
 import de.hybris.platform.commercefacades.order.data.CartData;
 import de.hybris.platform.commercefacades.order.data.OrderData;
+import de.hybris.platform.commercefacades.storesession.data.CurrencyData;
+import de.hybris.platform.commercefacades.storesession.data.LanguageData;
 import org.springframework.ui.ModelMap;
 
 import javax.annotation.Resource;
@@ -30,6 +32,16 @@ import java.util.Map;
 public class AffirmExportJsPropertiesBeforeViewHandler extends BeforeViewJsPropsHandlerAdaptee {
     public static final String CART_DATA = "cartData";
     public static final String ORDER_DATA = "orderData";
+    public static final String CURRENT_CURRENCY = "currentCurrency";
+    public static final String CURRENT_LANGUAGE = "currentLanguage";
+    public static final String CURRENCY_CAD = "CAD";
+    public static final String LOCALE_EN_US = "en_US";
+    public static final String LOCALE_EN_CA = "en_CA";
+    public static final String LOCALE_FR_CA = "fr_CA";
+    public static final String COUNTRY_CODE_USA = "USA";
+    public static final String COUNTRY_CODE_CAN = "CAN";
+    public static final String LANG_FR = "fr";
+
     @Resource(name = "cmsSiteService")
     private CMSSiteService cmsSiteService;
 
@@ -44,13 +56,39 @@ public class AffirmExportJsPropertiesBeforeViewHandler extends BeforeViewJsProps
         if(affirmConfigContainer == null){
            return viewName;
         }
-        String affirmPublicKey = affirmConfigContainer.getAffirmPublicKey();
         String affirmSiteUrl = affirmConfigContainer.getAffirmScriptUrl();
+        String affirmPublicKey = "";
+        String affirmCountryCode = "";
+        String affirmLocale = "";
+        String modelCurrency = "";
+        String modelLanguage = "";
+
+        if (model.get(CURRENT_CURRENCY) != null && model.get(CURRENT_LANGUAGE) != null) {
+            modelCurrency = ((CurrencyData) (model.get(CURRENT_CURRENCY))).getIsocode();
+            modelLanguage = ((LanguageData) (model.get(CURRENT_LANGUAGE))).getIsocode();
+        }
+
+        if (modelCurrency.equals(CURRENCY_CAD)) {
+            if (modelLanguage.equals(LANG_FR)) {
+                affirmLocale = LOCALE_FR_CA;
+            } else {
+                affirmLocale = LOCALE_EN_CA;
+            }
+            affirmCountryCode = COUNTRY_CODE_CAN;
+            affirmPublicKey = affirmConfigContainer.getAffirmPublicKeyCA();
+        } else {
+            affirmCountryCode = COUNTRY_CODE_USA;
+            affirmLocale = LOCALE_EN_US;
+            affirmPublicKey = affirmConfigContainer.getAffirmPublicKey();
+        }
 
         List<JavaScriptVariableData> javaScriptVariableData = jsVariables.get(super.getMessageSource().getAddOnName());
 
         javaScriptVariableData.add(JavaScriptVariableDataFactory.create(AffirmpaymentaddonWebConstants.AFFIRM_PUBLIC_KEY, affirmPublicKey));
         javaScriptVariableData.add(JavaScriptVariableDataFactory.create(AffirmpaymentaddonWebConstants.AFFIRM_SITE_URL, affirmSiteUrl));
+
+        javaScriptVariableData.add(JavaScriptVariableDataFactory.create(AffirmpaymentaddonWebConstants.AFFIRM_LOCALE, affirmLocale));
+        javaScriptVariableData.add(JavaScriptVariableDataFactory.create(AffirmpaymentaddonWebConstants.AFFIRM_COUNTRY_CODE, affirmCountryCode));
 
         String sessionId = "";
         if(model.get(CART_DATA) instanceof CartData){

@@ -37,7 +37,7 @@ public class AffirmPageConfigTag extends BodyTagSupport implements DynamicAttrib
         CMSSiteModel cmsSiteModel = cmsSiteService.getCurrentSite();
         AffirmConfigContainerModel affirmConfigContainer = cmsSiteModel.getAffirmConfigContainer();
 
-        if(affirmConfigContainer == null || !affirmConfigContainer.isEnabled() || StringUtils.isEmpty(affirmConfigContainer.getAffirmPublicKey())){
+        if(affirmConfigContainer == null || !affirmConfigContainer.isEnabled() || StringUtils.isEmpty(affirmConfigContainer.getAffirmPublicKey()) || StringUtils.isEmpty(affirmConfigContainer.getAffirmPublicKeyCA())){
             return null;
         }
 

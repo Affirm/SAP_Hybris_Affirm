@@ -5,6 +5,7 @@ import de.hybris.platform.acceleratorservices.urlresolver.SiteBaseUrlResolutionS
 import de.hybris.platform.commerceservices.customer.CustomerEmailResolutionService;
 import de.hybris.platform.commerceservices.url.impl.AbstractUrlResolver;
 import de.hybris.platform.converters.Populator;
+import de.hybris.platform.core.model.c2l.CurrencyModel;
 import de.hybris.platform.core.model.order.AbstractOrderEntryModel;
 import de.hybris.platform.core.model.order.CartModel;
 import de.hybris.platform.core.model.product.ProductModel;
@@ -44,7 +45,10 @@ public class AffirmCheckoutDataPopulator implements Populator<CartModel, AffirmC
 
    public static final String CHECKOUT_AFFIRM_CANCEL_URL = "/checkout/affirm/cancel";
    public static final String CHECKOUT_AFFIRM_CONFIRMATION_URL = "/checkout/affirm/authorise";
-
+   public static final String COUNTRY_CODE_USA = "USA";
+   public static final String COUNTRY_CODE_CAN = "CAN";
+   public static final String CURRENCY_CODE_CAD = "CAD";
+   public static final String CURRENCY_CODE_USD = "USD";
    public static final String POST = "POST";
    private static final Logger LOG = Logger.getLogger(AffirmCheckoutDataPopulator.class);
 
@@ -76,6 +80,22 @@ public class AffirmCheckoutDataPopulator implements Populator<CartModel, AffirmC
       checkoutData.setOrder_id(cartModel.getCode());
       checkoutData.setShipping_amount(convertToBigInteger(cartModel.getDeliveryCost()));
       checkoutData.setTax_amount(convertToBigInteger(cartModel.getTotalTax()));
+
+      String countryCode = "";
+      String currencyCode = "";
+
+      if (((CurrencyModel)(cartModel).getCurrency()) != null) {
+         currencyCode = ((CurrencyModel)(cartModel).getCurrency()).getIsocode();
+      }
+
+      if (currencyCode.equals(CURRENCY_CODE_CAD)) {
+         countryCode = COUNTRY_CODE_CAN;
+      } else {
+         countryCode = COUNTRY_CODE_USA;
+      }
+
+      checkoutData.setCurrency(currencyCode);
+      checkoutData.setCountry_code(countryCode);
 
       checkoutData.setTotal(convertToBigInteger(cartModel.getTotalIncludingTax()));
 
@@ -251,12 +271,12 @@ public class AffirmCheckoutDataPopulator implements Populator<CartModel, AffirmC
    private void populateAddress(AddressModel deliveryAddress, AffirmShippingData shipping) {
       AffirmAddressData addressData = new AffirmAddressData();
       addressData.setCity(deliveryAddress.getTown());
-      addressData.setLine1(deliveryAddress.getLine1());
-      addressData.setLine2(deliveryAddress.getLine2());
+      addressData.setStreet1(deliveryAddress.getLine1());
+      addressData.setStreet2(deliveryAddress.getLine2());
       addressData.setCountry(deliveryAddress.getCountry().getIsocode());
-      addressData.setZipcode(deliveryAddress.getPostalcode());
+      addressData.setPostal_code(deliveryAddress.getPostalcode());
       if(deliveryAddress.getRegion() != null){
-         addressData.setState(deliveryAddress.getRegion().getIsocodeShort());
+         addressData.setRegion1_code(deliveryAddress.getRegion().getIsocodeShort());
       }
       shipping.setAddress(addressData);
    }

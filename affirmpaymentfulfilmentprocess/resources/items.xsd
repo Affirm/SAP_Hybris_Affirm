@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- [y] hybris Platform
-
- Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
-
- This software is the confidential and proprietary information of SAP
- ("Confidential Information"). You shall not disclose such Confidential
- Information and shall use it only in accordance with the terms of the
- license agreement you entered into with SAP.
+ Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
@@ -386,6 +379,11 @@
 					<xs:documentation>Configures a single index key.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+            <xs:element name="include" type="indexIncludeType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Configures a single index include column.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
 		</xs:sequence>
 		<xs:attribute name="name" type="xs:string" use="required">
 			<xs:annotation>
@@ -473,6 +471,17 @@
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
+
+    <xs:complexType name="indexIncludeType">
+        <xs:annotation>
+            <xs:documentation>Configures a single index include column.</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="attribute" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>Type attribute to be indexed.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
 
 	<xs:complexType name="attributeType">
 		<xs:annotation>

@@ -1,9 +1,12 @@
 _affirm_config = {
     public_api_key:  ACC.addons.affirmpaymentaddon.affirm_public_key,
     script:          ACC.addons.affirmpaymentaddon.affirm_site_url,
-    session_id:      ACC.addons.affirmpaymentaddon.affirm_session_id
-    };
-(function(l,g,m,e,a,f,b){var d,c=l[m]||{},h=document.createElement(f),n=document.getElementsByTagName(f)[0],k=function(a,b,c){return function(){a[b]._.push([c,arguments])}};c[e]=k(c,e,"set");d=c[e];c[a]={};c[a]._=[];d._=[];c[a][b]=k(c,a,b);a=0;for(b="set add save post open empty reset on off trigger ready setProduct".split(" ");a<b.length;a++)d[b[a]]=k(c,e,b[a]);a=0;for(b=["get","token","url","items"];a<b.length;a++)d[b[a]]=function(){};h.async=!0;h.src=g[f];n.parentNode.insertBefore(h,n);delete g[f];d(g);l[m]=c})(window,_affirm_config,"affirm","checkout","ui","script","ready");
+    session_id:      ACC.addons.affirmpaymentaddon.affirm_session_id,
+    locale:			 ACC.addons.affirmpaymentaddon.affirm_locale,
+    country_code:	 ACC.addons.affirmpaymentaddon.affirm_country_code,
+};
+
+(function(m,g,n,d,a,e,h,c){var b=m[n]||{},k=document.createElement(e),p=document.getElementsByTagName(e)[0],l=function(a,b,c){return function(){a[b]._.push([c,arguments])}};b[d]=l(b,d,"set");var f=b[d];b[a]={};b[a]._=[];f._=[];b._=[];b[a][h]=l(b,a,h);b[c]=function(){b._.push([h,arguments])};a=0;for(c="set add save post open empty reset on off trigger ready setProduct".split(" ");a<c.length;a++)f[c[a]]=l(b,d,c[a]);a=0;for(c=["get","token","url","items"];a<c.length;a++)f[c[a]]=function(){};k.async=!0;k.src=g[e];p.parentNode.insertBefore(k,p);delete g[e];f(g);m[n]=b})(window,_affirm_config,"affirm","checkout","ui","script","ready","jsReady");
 
 ACC.affirm = {
 
@@ -30,14 +33,6 @@ ACC.affirm = {
                 var year =  parseInt("20" + e.expiration.substring(2, 4));
                 $('#card_expirationMonth').val(month);
                 $('#card_expirationYear').val(year);
-
-                //$('#billTo_city').val(e.billing_address.city);
-                //$('#billTo_state').val(e.billing_address.state);
-                //$('#billTo_postalCode').val(e.billing_address.zipcode);
-                //$('#billTo_street1').val(e.billing_address.line1);
-                //if(e.billing_address.line2 != undefined){
-                //   $('#billTo_street2').val(e.billing_address.line2);
-                //}
 
                 $('#silentOrderPostForm').submit();
             }
