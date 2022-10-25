@@ -247,7 +247,7 @@ public class AffirmCheckoutDataPopulator implements Populator<CartModel, AffirmC
       AffirmMetadata metadata = new AffirmMetadata();
       metadata.setPlatform_type(configurationService.getConfiguration().getString("affirm.platform.type","Hybris"));
       metadata.setPlatform_version(configurationService.getConfiguration().getString("affirm.platform.version","1.8.0.8"));
-      metadata.setPlatform_affirm(configurationService.getConfiguration().getString("affirm.extension.version","Affirm_1.0"));
+      metadata.setPlatform_affirm(configurationService.getConfiguration().getString("affirm.extension.version","Affirm_1.1"));
       metadata.setShipping_type(cartModel.getDeliveryMode().getName());
       if(cartModel.getSite().getAffirmConfigContainer().isModalMode()){
          metadata.setMode("modal");
